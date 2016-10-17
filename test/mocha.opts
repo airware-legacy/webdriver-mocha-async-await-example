@@ -1,0 +1,5 @@
+--timeout 999999
+--ui tdd
+--full-trace
+--recursive
+--compilers js:babel-register

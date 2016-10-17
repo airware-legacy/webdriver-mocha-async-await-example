@@ -1,0 +1,30 @@
+{
+  "name": "webdriver-mocha-async-await-example",
+  "version": "1.0.0",
+  "description": "Using Mocha, Selenium Webdriver, and Babel together to provide async / await to browser e2e tests",
+  "scripts": {
+    "test": "./node_modules/.bin/_mocha",
+    "install": "./node_modules/.bin/selenium-standalone install",
+    "start": "./node_modules/.bin/selenium-standalone start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidmillions/webdriver-mocha-async-await-example.git"
+  },
+  "author": "Airware",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kidmillions/webdriver-mocha-async-await-example/issues"
+  },
+  "homepage": "https://github.com/kidmillions/webdriver-mocha-async-await-example#readme",
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-2": "^6.17.0",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "selenium-standalone": "^5.7.2",
+    "selenium-webdriver": "^3.0.0-beta-3"
+  }
+}
