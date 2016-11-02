@@ -4,6 +4,10 @@ This is an example of using Mocha, Selenium Webdriver and Babel together to prov
 
 Originally presented at the Selenium Meetup in SF on 10-19-16.
 
+[Video of the Meetup](https://www.youtube.com/watch?v=BTpMB2-8qMM)
+
+[Slides from the Meetup](http://www.slideshare.net/MekSrunyuStittri/endtoend-test-automation-with-nodejs-one-year-later)
+
 Prequisites include Java, NodeJs, Chrome browser.
 
 To start the Selenium server, run `npm run install` and `npm run start`
