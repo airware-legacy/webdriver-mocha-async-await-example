@@ -1,5 +1,5 @@
 // @flow
-const baseUrl = 'https://saucelabs.com/'
+const baseUrl = 'https://forwardjs.com/'
 
 export default {
   async goToHome (driver: WebDriverClass): Promise<void> {
