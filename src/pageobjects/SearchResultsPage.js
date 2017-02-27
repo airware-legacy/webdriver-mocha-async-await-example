@@ -1,18 +1,18 @@
-'use strict';
+// @flow
 
-import { By } from 'selenium-webdriver';
-import BasePage from './BasePage';
+import { By } from 'selenium-webdriver'
+import BasePage from './BasePage'
 
-const SEARCH_TITLE = By.css('.container .row h2');
+const SEARCH_TITLE = By.css('.container .row h2')
 
 export default class SearchResultsPage extends BasePage {
 
-  async isLoaded() {
+  async isLoaded () {
     await this.waitForDisplayed(SEARCH_TITLE)
   }
 
-  async getTitle() {
-    return this.getText(SEARCH_TITLE);
+  async getTitle () {
+    return this.getText(SEARCH_TITLE)
   }
 
 }

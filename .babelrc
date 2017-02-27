@@ -1,9 +1,15 @@
 {
   "presets": [
-    "es2015",
-    "stage-2"
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
   ],
   "plugins": [
-    "transform-runtime"
-  ]
+    "transform-flow-strip-types",
+    "transform-object-rest-spread"
+  ],
+  "retainLines": true,
+  "sourceMaps": "both"
 }

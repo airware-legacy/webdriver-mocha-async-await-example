@@ -1,21 +1,19 @@
-'use strict';
-
-import webdriver from 'selenium-webdriver';
+// @flow
+import webdriver from 'selenium-webdriver'
 
 export default class DriverBuilder {
-  constructor() {
-    const builder = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub');
-    const capabilities = webdriver.Capabilities['chrome']();
-    builder.withCapabilities(capabilities);
-    this._driver = builder.build();
+  driver: WebDriverClass
+
+  constructor () {
+    const builder = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub')
+    // $FlowIssue getting chrome capabilities as method is a-ok
+    const capabilities = webdriver.Capabilities['chrome']()
+    builder.withCapabilities(capabilities)
+    this.driver = builder.build()
   }
 
-  get driver() {
-    return this._driver;
-  }
-
-  async quit() {
-    return this._driver.quit();
+  async quit (): Promise<void> {
+    return this.driver.quit()
   }
 
 }
