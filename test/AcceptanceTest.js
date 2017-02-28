@@ -2,7 +2,6 @@
 import { assert } from 'chai'
 
 import HomePage from './../src/pageobjects/HomePage'
-import SearchResultsPage from './../src/pageobjects/SearchResultsPage'
 
 import DriverBuilder from './../src/lib/DriverBuilder'
 import driverutils from './../src/lib/driver-utils'
@@ -21,18 +20,14 @@ describe('Acceptance Tests', function () {
     const homePage = new HomePage(driver)
     await homePage.isLoaded()
     const title = await homePage.getTitle()
-    assert.strictEqual(title, 'TESTING AT THE\nSPEED OF AWESOME.', 'Title should match expected tagline')
+    assert.strictEqual(title, 'Forward Thinkers of the Web Unite!', 'Title should match expected tagline')
   })
 
-  it('Searches for a term', async function () {
+  it('Buys a ticket', async function () {
     const homePage = new HomePage(driver)
-    await homePage.isLoaded()
-    await homePage.search('Airware')
-
-    const searchResultsPage = new SearchResultsPage(driver)
-    await searchResultsPage.isLoaded()
-    const title = await searchResultsPage.getTitle()
-    assert.strictEqual(title, 'Search Results for Airware', 'Title should reference search term')
+    await homePage.clickHeroButton()
+    const text = await homePage.getTicketButtonText()
+    assert.strictEqual(text, 'GET TICKETS NOW!', 'Get ticket button text should be correct.')
   })
 
   afterEach(async function () {

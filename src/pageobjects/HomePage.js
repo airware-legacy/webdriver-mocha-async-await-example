@@ -2,28 +2,31 @@
 import { By } from 'selenium-webdriver'
 import BasePage from './BasePage'
 
-const SEARCH_BUTTON = By.css('#site-header button.hidden-sm-down')
-const TITLE = By.css('.site-content h1')
-const SEARCH_BOX = By.css('#site-header form input[type="text"]')
-const SEARCH_SUBMIT_BUTTON = By.css('#site-header form button[type="submit"]')
+const TITLE = By.css('.speaker-section h3.down-50')
+const HERO_BTN = By.css('a.what-is-forward')
+const TICKET_BTN = By.css('a.tito-submit')
 
 export default class HomePage extends BasePage {
 
-  async isLoaded () {
+  async isLoaded (): Promise<void> {
     await this.waitForDisplayed(TITLE)
-    await this.waitForDisplayed(SEARCH_BUTTON)
+    await this.waitForDisplayed(HERO_BTN)
   }
 
-  async getTitle () {
+  async getTitle (): Promise<string> {
     return this.getText(TITLE)
   }
 
-  async search (searchTerm: string) {
-    await this.click(SEARCH_BUTTON)
-    await this.waitForDisplayed(SEARCH_BOX)
-    await this.waitForDisplayed(SEARCH_SUBMIT_BUTTON)
-    await this.sendKeys(SEARCH_BOX, searchTerm)
-    await this.click(SEARCH_SUBMIT_BUTTON)
+  async clickHeroButton (): Promise<void> {
+    return this.click(HERO_BTN)
+  }
+
+  async clickTicketButton (): Promise<void> {
+    return this.click(TICKET_BTN)
+  }
+
+  async getTicketButtonText (): Promise<string> {
+    return this.getText(TICKET_BTN)
   }
 
 }
