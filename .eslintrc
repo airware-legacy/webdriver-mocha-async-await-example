@@ -1,0 +1,15 @@
+{
+  "extends": ["eslint:recommended", "standard", "plugin:flowtype/recommended"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype"
+  ],
+  "env": {
+      "node": true,
+      "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  }
+}
