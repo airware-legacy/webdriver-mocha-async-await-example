@@ -1,7 +1,10 @@
 {
   "name": "webdriver-mocha-async-await-example",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Using Mocha, Selenium Webdriver, and Babel together to provide async / await to browser e2e tests",
+  "engines": {
+    "node": ">7.5.0"
+  },
   "scripts": {
     "test": "./node_modules/.bin/_mocha",
     "install": "./node_modules/.bin/selenium-standalone install",
