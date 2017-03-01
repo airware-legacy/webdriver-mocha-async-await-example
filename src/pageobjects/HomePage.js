@@ -5,12 +5,15 @@ import BasePage from './BasePage'
 const TITLE = By.css('.speaker-section h3.down-50')
 const HERO_BTN = By.css('a.what-is-forward')
 const TICKET_BTN = By.css('a.tito-submit')
+const FORWARD_COURSES_LINK = By.css('a[href="http://forwardcourses.com"]')
 
 export default class HomePage extends BasePage {
 
   async isLoaded (): Promise<void> {
-    await this.waitForDisplayed(TITLE)
-    await this.waitForDisplayed(HERO_BTN)
+    await Promise.all([
+      this.waitForDisplayed(TITLE),
+      this.waitForDisplayed(HERO_BTN)
+    ])
   }
 
   async getTitle (): Promise<string> {
@@ -27,6 +30,10 @@ export default class HomePage extends BasePage {
 
   async getTicketButtonText (): Promise<string> {
     return this.getText(TICKET_BTN)
+  }
+
+  async clickOnlineCoursesLink (): Promise<void> {
+    return this.click(FORWARD_COURSES_LINK)
   }
 
 }

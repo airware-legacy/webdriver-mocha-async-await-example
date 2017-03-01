@@ -3,7 +3,7 @@ import { until } from 'selenium-webdriver'
 
 async function waitForLocated (driver: WebDriverClass, locator: WebDriverLocator, retries?: number = 3): Promise<void> {
   try {
-    await driver.wait(until.elementLocated(locator), 7000)
+    await driver.wait(until.elementLocated(locator), 3000)
   } catch (err) {
     if (retries === 0) {
       throw new Error(`Still not able to locate element ${locator.toString()} after maximum retries, Error message: ${err.message.toString()}`)
@@ -16,7 +16,7 @@ async function waitForLocated (driver: WebDriverClass, locator: WebDriverLocator
 async function waitForVisible (driver: WebDriverClass, locator: WebDriverLocator, retries?: number = 3): Promise<void> {
   try {
     const element = await driver.findElement(locator)
-    await driver.wait(until.elementIsVisible(element), 7000)
+    await driver.wait(until.elementIsVisible(element), 3000)
   } catch (err) {
     if (retries === 0) {
       throw new Error(`Element ${locator.toString()} still not visible after maximum retries, Error message: ${err.message.toString()}`)
@@ -55,6 +55,20 @@ export default class BasePage {
     }
   }
 
+  async getAttribute (locator: WebDriverLocator, attribute: string, retries?: number = 1): Promise<string> {
+    try {
+      const element = await this.driver.findElement(locator)
+      const attr = element.getAttribute(attribute)
+      return attr
+    } catch (err) {
+      if (retries === 0) {
+        throw new Error(`Unable to get attribute of ${locator.toString()} after maximum retries, error : ${err.message}`)
+      }
+      await this.driver.sleep(250)
+      return this.getAttribute(locator, attribute, retries - 1)
+    }
+  }
+
   async getText (locator: WebDriverLocator, retries?: number = 1): Promise<string> {
     try {
       const element = await this.driver.findElement(locator)
@@ -66,6 +80,25 @@ export default class BasePage {
       }
       await this.driver.sleep(250)
       return this.getText(locator, retries - 1)
+    }
+  }
+
+  async setAttribute (locator: WebDriverLocator, attributeName: string, attributeVal: string, retries?: number = 1): Promise<void> {
+    try {
+      const element = await this.driver.findElement(locator)
+      await this.driver.executeScript(
+        'arguments[0].setAttribute(arguments[1], arguments[2]);',
+        element,
+        attributeName,
+        attributeVal
+      )
+      return
+    } catch (err) {
+      if (retries === 0) {
+        throw new Error(`Unable to set attribute of ${locator.toString()} text after maximum retries, error : ${err.message}`)
+      }
+      await this.driver.sleep(250)
+      return this.setAttribute(locator, attributeName, attributeVal, retries - 1)
     }
   }
 

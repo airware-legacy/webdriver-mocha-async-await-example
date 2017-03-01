@@ -2,6 +2,7 @@
 import { assert } from 'chai'
 
 import HomePage from './../src/pageobjects/HomePage'
+// import ForwardCoursesPage from './../src/pageobjects/ForwardCoursesPage'
 
 import DriverBuilder from './../src/lib/DriverBuilder'
 import driverutils from './../src/lib/driver-utils'
