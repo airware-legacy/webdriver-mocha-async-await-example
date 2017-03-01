@@ -14,8 +14,11 @@ Originally presented at the Selenium Meetup in SF on 10-19-16.
 
 Prequisites include Java, NodeJs, Chrome browser.
 
-To start the Selenium server, run `npm run install` and `npm run start`
+To start the Selenium server: `npm run start`
 
 To run the acceptance test suite, run `npm test`
+
+Lint: `npm run lint`
+Flow type checking: `npm run flow`
 
 **Questions?** You can email the test automation team at cclayman@airware.com or mstittri@airware.com, or file an issue. Contributions welcome.
